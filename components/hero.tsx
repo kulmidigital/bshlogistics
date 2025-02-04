@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 import { Outfit } from "next/font/google";
+import { Button } from "@/components/ui/button";
+import { Calculator, Phone } from "lucide-react";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -38,8 +40,8 @@ export const Hero = () => {
     const initialParticles = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
-      vx: (Math.random() - 0.5) * 0.2, // Velocity X
-      vy: (Math.random() - 0.5) * 0.2, // Velocity Y
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
       color:
         PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)],
     }));
@@ -194,7 +196,7 @@ export const Hero = () => {
 
       {/* Main Content */}
       <div
-        className={`relative z-30 h-screen flex flex-col ${outfit.className}`}>
+        className={`relative z-50 h-screen flex flex-col ${outfit.className}`}>
         {/* Hero Content */}
         <div className='flex-1 flex items-center'>
           <div className='max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 sm:px-6 lg:px-8 pt-20'>
@@ -218,28 +220,30 @@ export const Hero = () => {
                 </p>
               </motion.div>
 
-              {/* Cost Calculator Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-                className='flex items-center'>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className='relative group w-full sm:w-auto'>
-                  <div className='absolute inset-0 bg-gradient-to-r from-[#003366] to-[#0099FF] rounded-xl blur-lg opacity-70 group-hover:opacity-100 transition-opacity' />
-                  <div className='relative px-6 sm:px-8 py-4 bg-gradient-to-r from-[#003366]/90 to-[#0099FF]/90 rounded-xl flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start'>
-                    <div className='p-2 bg-white/20 rounded-lg'>
-                      <span className='text-xl'>🚢</span>
-                    </div>
-                    <div>
-                      <h3 className='font-medium text-white'>Cost Estimator</h3>
-                      <p className='text-sm text-white/80'>Get instant quote</p>
-                    </div>
+              {/* Buttons */}
+              <div className='flex flex-col sm:flex-row gap-4 mt-8'>
+                <Button
+                  size='lg'
+                  onClick={() => {}}
+                  className='h-14 bg-[#003366] hover:bg-[#003366]/90 hover:scale-105 transition-all'>
+                  <div className='p-2 bg-[#0099FF] rounded-md'>
+                    <Calculator className='h-5 w-5' />
                   </div>
-                </motion.button>
-              </motion.div>
+                  Cost Estimator
+                </Button>
+
+                <Button
+                  size='lg'
+                  className='h-14 bg-[#0099FF] hover:bg-[#0099FF]/90 hover:scale-105 transition-all'
+                  asChild>
+                  <a href='#contact'>
+                    <div className='p-2 bg-[#003366] rounded-md'>
+                      <Phone className='h-5 w-5' />
+                    </div>
+                    Contact Us
+                  </a>
+                </Button>
+              </div>
 
               {/* Trust Indicators */}
               <motion.div
@@ -347,7 +351,7 @@ export const Hero = () => {
       </div>
 
       {/* Interactive Particle Network */}
-      <div className='absolute inset-0 z-40 overflow-hidden'>
+      <div className='absolute inset-0 z-20 overflow-hidden'>
         <svg className='absolute inset-0 w-full h-full'>
           {/* Draw connections */}
           {getParticleConnections().map((connection, i) => (
