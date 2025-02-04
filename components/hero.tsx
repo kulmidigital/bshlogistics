@@ -143,10 +143,10 @@ export const Hero = () => {
 
       {/* Navigation Arrows - Hidden on small devices */}
       <button
-        className='absolute left-4 top-1/2 z-50 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110 hidden md:block'
         onClick={() =>
           setCurrentImage((prev) => (prev - 1 + images.length) % images.length)
-        }>
+        }
+        className='absolute left-4 top-1/2 z-20 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110 hidden md:block'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
@@ -162,8 +162,8 @@ export const Hero = () => {
         </svg>
       </button>
       <button
-        className='absolute right-4 top-1/2 z-50 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110 hidden md:block'
-        onClick={() => setCurrentImage((prev) => (prev + 1) % images.length)}>
+        onClick={() => setCurrentImage((prev) => (prev + 1) % images.length)}
+        className='absolute right-4 top-1/2 z-20 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110 hidden md:block'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
@@ -182,7 +182,7 @@ export const Hero = () => {
       {/* Gradient overlays */}
       <div className='absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/30 to-black/60' />
       <motion.div
-        className='absolute inset-0 z-20 bg-gradient-to-r from-blue-600/10 via-purple-500/10 to-pink-500/10 mix-blend-overlay'
+        className='absolute inset-0 z-10 bg-gradient-to-r from-blue-600/10 via-purple-500/10 to-pink-500/10 mix-blend-overlay'
         animate={{
           scale: [1, 1.1, 1],
           rotate: [0, 3, -3, 0],
@@ -196,7 +196,7 @@ export const Hero = () => {
 
       {/* Main Content */}
       <div
-        className={`relative z-50 h-screen flex flex-col ${outfit.className}`}>
+        className={`relative z-20 h-screen flex flex-col ${outfit.className}`}>
         {/* Hero Content */}
         <div className='flex-1 flex items-center'>
           <div className='max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 sm:px-6 lg:px-8 pt-20'>
@@ -208,9 +208,9 @@ export const Hero = () => {
                 transition={{ duration: 1 }}
                 className='space-y-6'>
                 <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-white space-y-3'>
-                  <span className='block'>Transform Your</span>
+                  <span className='block'>Globally Connected</span>
                   <span className='block bg-gradient-to-r from-blue-200 via-blue-300 to-purple-300 bg-clip-text text-transparent'>
-                    Global Logistics
+                    Locally Invested
                   </span>
                 </h1>
                 <p className='text-lg sm:text-xl text-white/80 max-w-xl'>
@@ -225,22 +225,18 @@ export const Hero = () => {
                 <Button
                   size='lg'
                   onClick={() => {}}
-                  className='h-14 bg-[#003366] hover:bg-[#003366]/90 hover:scale-105 transition-all'>
-                  <div className='p-2 bg-[#0099FF] rounded-md'>
-                    <Calculator className='h-5 w-5' />
-                  </div>
-                  Cost Estimator
+                  className='bg-[#003366] hover:bg-[#003366]/90 text-white px-6'>
+                  <Calculator className='h-5 w-5 text-white' />
+                  <span>Cost Estimator</span>
                 </Button>
 
                 <Button
                   size='lg'
-                  className='h-14 bg-[#0099FF] hover:bg-[#0099FF]/90 hover:scale-105 transition-all'
+                  className='bg-[#0099FF] hover:bg-[#0099FF]/90 text-white px-6'
                   asChild>
                   <a href='#contact'>
-                    <div className='p-2 bg-[#003366] rounded-md'>
-                      <Phone className='h-5 w-5' />
-                    </div>
-                    Contact Us
+                    <Phone className='h-5 w-5 text-white' />
+                    <span>Contact Us</span>
                   </a>
                 </Button>
               </div>
@@ -351,7 +347,7 @@ export const Hero = () => {
       </div>
 
       {/* Interactive Particle Network */}
-      <div className='absolute inset-0 z-20 overflow-hidden'>
+      <div className='absolute inset-0 z-10 overflow-hidden'>
         <svg className='absolute inset-0 w-full h-full'>
           {/* Draw connections */}
           {getParticleConnections().map((connection, i) => (
