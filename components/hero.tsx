@@ -11,14 +11,14 @@ const outfit = Outfit({
 });
 
 const PARTICLE_COLORS = [
-  "rgba(147, 197, 253, 0.5)", // blue-300
-  "rgba(196, 181, 253, 0.5)", // purple-300
-  "rgba(251, 207, 232, 0.5)", // pink-300
-  "rgba(167, 243, 208, 0.5)", // emerald-300
+  "rgba(147, 197, 253, 0.5)",
+  "rgba(196, 181, 253, 0.5)",
+  "rgba(251, 207, 232, 0.5)",
+  "rgba(167, 243, 208, 0.5)",
 ];
 
 const PARTICLE_COUNT = 30;
-const CONNECTION_RADIUS = 150; // Maximum distance for particles to connect
+const CONNECTION_RADIUS = 150;
 
 interface Particle {
   x: number;
@@ -228,13 +228,13 @@ export const Hero = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className='relative group'>
-                  <div className='absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur-lg opacity-70 group-hover:opacity-100 transition-opacity' />
-                  <div className='relative px-8 py-4 bg-gradient-to-r from-blue-500/90 to-purple-500/90 rounded-xl flex items-center gap-4'>
+                  <div className='absolute inset-0 bg-gradient-to-r from-[#003366] to-[#0099FF] rounded-xl blur-lg opacity-70 group-hover:opacity-100 transition-opacity' />
+                  <div className='relative px-8 py-4 bg-gradient-to-r from-[#003366]/90 to-[#0099FF]/90 rounded-xl flex items-center gap-4'>
                     <div className='p-2 bg-white/20 rounded-lg'>
                       <span className='text-xl'>🚢</span>
                     </div>
                     <div>
-                      <h3 className='font-medium text-white'>Calculate Cost</h3>
+                      <h3 className='font-medium text-white'>Cost Estimator</h3>
                       <p className='text-sm text-white/80'>Get instant quote</p>
                     </div>
                   </div>
@@ -270,7 +270,7 @@ export const Hero = () => {
               className='col-span-5 flex flex-col justify-center gap-4'>
               <div className='bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors'>
                 <div className='flex items-center gap-4'>
-                  <div className='p-3 bg-blue-500/20 rounded-xl'>✈️</div>
+                  <div className='p-3 bg-[#0099FF]/20 rounded-xl'>✈️</div>
                   <div>
                     <h3 className='text-lg font-medium text-white'>
                       Air Freight
@@ -283,7 +283,7 @@ export const Hero = () => {
               </div>
               <div className='bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors'>
                 <div className='flex items-center gap-4'>
-                  <div className='p-3 bg-purple-500/20 rounded-xl'>🚢</div>
+                  <div className='p-3 bg-[#003366]/20 rounded-xl'>🚢</div>
                   <div>
                     <h3 className='text-lg font-medium text-white'>
                       Sea Freight
@@ -296,7 +296,7 @@ export const Hero = () => {
               </div>
               <div className='bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors'>
                 <div className='flex items-center gap-4'>
-                  <div className='p-3 bg-pink-500/20 rounded-xl'>🛃</div>
+                  <div className='p-3 bg-[#0099FF]/20 rounded-xl'>🛃</div>
                   <div>
                     <h3 className='text-lg font-medium text-white'>
                       Customs Clearance
@@ -320,11 +320,11 @@ export const Hero = () => {
                 onClick={() => setCurrentImage(index)}
                 className={`group relative h-1.5 transition-all duration-500 ${
                   currentImage === index
-                    ? "w-8 bg-white"
-                    : "w-2 bg-white/50 hover:bg-white/70"
+                    ? "w-8 bg-[#0099FF]"
+                    : "w-2 bg-white/50 hover:bg-[#003366]/70"
                 } rounded-full overflow-hidden`}>
                 <motion.div
-                  className='absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400'
+                  className='absolute inset-0 bg-gradient-to-r from-[#003366] to-[#0099FF]'
                   initial={false}
                   animate={{
                     x: currentImage === index ? "0%" : "-100%",

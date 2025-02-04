@@ -1,122 +1,185 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 const menuItems = [
-  { name: "About us", href: "#about" },
   { name: "Our Services", href: "#services" },
+  { name: "About us", href: "#about" },
   { name: "FAQ", href: "#faq" },
-  { name: "Air Cargo", href: "#air-cargo" },
-  { name: "Sea Cargo", href: "#sea-cargo" },
+  { name: "Air Cargo", href: "#services" },
+  { name: "Sea Cargo", href: "#services" },
   { name: "Online Shopping", href: "#shopping" },
-  { name: "Custom Clearance", href: "#clearance" },
+  { name: "Custom Clearance", href: "#services" },
 ];
 
 export const Navbar = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Handle scroll effect
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", () => {
+  useEffect(() => {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-    });
-  }
+      // Close mobile menu when scrolling
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMobileMenuOpen]);
+
+  // Close mobile menu on resize if screen becomes large
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMobileMenuOpen]);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/80 backdrop-blur-lg py-4" : "bg-transparent py-6"
-      }`}>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex items-center justify-between'>
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className='text-white font-bold text-2xl'>
-            <Link href='/' className='flex items-center gap-2'>
-              <motion.div
-                animate={{
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}>
-                🚢
-              </motion.div>
-              <span className='bg-gradient-to-r from-blue-200 via-blue-300 to-purple-300 bg-clip-text text-transparent'>
-                BSH Cargo
-              </span>
-            </Link>
-          </motion.div>
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white shadow-lg py-1.5"
+            : "bg-white/90 backdrop-blur-sm py-2"
+        }`}>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+          <div className='flex items-center justify-between h-14'>
+            {/* Logo */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className='relative flex items-center'>
+              <Link href='/' className='flex items-center'>
+                <Image
+                  src='/bsh_logo.png'
+                  alt='BSH Logistics'
+                  width={180}
+                  height={45}
+                  className='object-contain'
+                  priority
+                />
+              </Link>
+            </motion.div>
 
-          {/* Navigation Items */}
-          <div className='hidden lg:flex items-center gap-1'>
-            {menuItems.map((item) => (
-              <motion.div
-                key={item.name}
-                onHoverStart={() => setActiveItem(item.name)}
-                onHoverEnd={() => setActiveItem(null)}
-                className='relative'>
-                <Link
-                  href={item.href}
-                  className='px-4 py-2 text-sm text-white/90 hover:text-white transition-colors relative rounded-full'>
-                  {item.name}
-                  {activeItem === item.name && (
-                    <motion.div
-                      layoutId='navbar-hover'
-                      className='absolute inset-0 bg-white/10 rounded-full -z-10'
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    />
-                  )}
-                </Link>
-              </motion.div>
-            ))}
+            {/* Navigation Items */}
+            <div className='hidden lg:flex items-center gap-5'>
+              {menuItems.map((item) => (
+                <motion.div
+                  key={item.name}
+                  onHoverStart={() => setActiveItem(item.name)}
+                  onHoverEnd={() => setActiveItem(null)}
+                  className='relative'>
+                  <Link
+                    href={item.href}
+                    className='px-2 py-1.5 text-[14px] text-[#003366] hover:text-[#0099FF] transition-colors relative rounded-md font-medium'>
+                    {item.name}
+                    {activeItem === item.name && (
+                      <motion.div
+                        layoutId='navbar-hover'
+                        className='absolute inset-0 bg-[#0099FF]/5 rounded-md -z-10'
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              ))}
+
+              {/* Get Quote Button */}
+              <motion.a
+                href='#services'
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className='px-4 py-1.5 bg-gradient-to-r from-[#003366] to-[#0099FF] text-white rounded-md text-[14px] font-medium hover:shadow-lg transition-all'>
+                Get Quote
+              </motion.a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className='lg:hidden p-1.5 text-[#003366] hover:text-[#0099FF] rounded-md hover:bg-[#0099FF]/5 transition-colors'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth={1.5}
+                stroke='currentColor'
+                className='w-6 h-6'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d={
+                    isMobileMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  }
+                />
+              </svg>
+            </motion.button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className='lg:hidden p-2 text-white/90 hover:text-white rounded-full hover:bg-white/10 transition-colors'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth={1.5}
-              stroke='currentColor'
-              className='w-6 h-6'>
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-              />
-            </svg>
-          </motion.button>
         </div>
-      </div>
 
-      {/* Animated Background Line */}
-      <motion.div
-        className='absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent'
-        animate={{
-          scaleX: [0.8, 1.2, 0.8],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    </motion.nav>
+        {/* Animated Background Line */}
+        <motion.div
+          className='absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#0099FF]/10 to-transparent'
+          animate={{
+            scaleX: [0.8, 1.2, 0.8],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </motion.nav>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className='fixed top-[3.5rem] left-0 right-0 bg-white shadow-lg z-40 lg:hidden'>
+            <div className='p-4 space-y-3'>
+              {menuItems.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className='block px-4 py-2 text-[#003366] hover:text-[#0099FF] hover:bg-[#0099FF]/5 rounded-md transition-colors'
+                  whileHover={{ x: 8 }}>
+                  {item.name}
+                </motion.a>
+              ))}
+              <motion.a
+                href='#services'
+                onClick={() => setIsMobileMenuOpen(false)}
+                className='block px-4 py-2 bg-gradient-to-r from-[#003366] to-[#0099FF] text-white rounded-md text-center font-medium hover:shadow-lg transition-all'
+                whileHover={{ scale: 1.02 }}>
+                Get Quote
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };

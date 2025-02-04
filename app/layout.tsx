@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "BSH Cargo | Modern Shipping Solutions",
   description:
     "BSH Cargo - Your trusted partner in global shipping and logistics solutions. Fast, reliable, and efficient cargo services worldwide.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
