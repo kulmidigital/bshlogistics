@@ -11,9 +11,63 @@ const menuItems = [
   { name: "FAQ", href: "#faq" },
   { name: "Air Cargo", href: "#services" },
   { name: "Sea Cargo", href: "#services" },
-  { name: "Online Shopping", href: "#shopping" },
   { name: "Custom Clearance", href: "#services" },
+  { name: "Contact", href: "#contact" },
 ];
+
+// Animation variants for the mobile menu
+const menuVariants = {
+  closed: {
+    height: 0,
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.3,
+      ease: [0.4, 0, 0.2, 1],
+      opacity: {
+        duration: 0.2,
+      },
+      height: {
+        duration: 0.3,
+      },
+    },
+  },
+  open: {
+    height: "auto",
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: [0.4, 0, 0.2, 1],
+      opacity: {
+        duration: 0.3,
+      },
+      height: {
+        duration: 0.3,
+      },
+    },
+  },
+};
+
+// Animation variants for menu items
+const menuItemVariants = {
+  closed: {
+    opacity: 0,
+    x: -10,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  open: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  }),
+};
 
 export const Navbar = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
@@ -114,23 +168,32 @@ export const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className='lg:hidden p-1.5 text-[#003366] hover:text-[#0099FF] rounded-md hover:bg-[#0099FF]/5 transition-colors'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.5}
-                stroke='currentColor'
-                className='w-6 h-6'>
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d={
-                    isMobileMenuOpen
-                      ? "M6 18L18 6M6 6l12 12"
-                      : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  }
-                />
-              </svg>
+              <motion.div
+                animate={isMobileMenuOpen ? "open" : "closed"}
+                variants={{
+                  open: { rotate: 180 },
+                  closed: { rotate: 0 },
+                }}
+                transition={{ duration: 0.3 }}
+                className='relative w-6 h-6'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth={1.5}
+                  stroke='currentColor'
+                  className='w-6 h-6'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d={
+                      isMobileMenuOpen
+                        ? "M6 18L18 6M6 6l12 12"
+                        : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    }
+                  />
+                </svg>
+              </motion.div>
             </motion.button>
           </div>
         </div>
@@ -149,22 +212,29 @@ export const Navbar = () => {
         />
       </motion.nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown with Enhanced Animation */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className='fixed top-[3.5rem] left-0 right-0 bg-white shadow-lg z-40 lg:hidden'>
-            <div className='p-4 space-y-3'>
-              {menuItems.map((item) => (
+            initial='closed'
+            animate='open'
+            exit='closed'
+            variants={menuVariants}
+            className='fixed top-[3.5rem] left-0 right-0 bg-white shadow-lg z-40 lg:hidden overflow-hidden'>
+            <motion.div
+              className='p-4 space-y-3'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}>
+              {menuItems.map((item, i) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className='block px-4 py-2 text-[#003366] hover:text-[#0099FF] hover:bg-[#0099FF]/5 rounded-md transition-colors'
+                  variants={menuItemVariants}
+                  custom={i}
                   whileHover={{ x: 8 }}>
                   {item.name}
                 </motion.a>
@@ -173,10 +243,12 @@ export const Navbar = () => {
                 href='#services'
                 onClick={() => setIsMobileMenuOpen(false)}
                 className='block px-4 py-2 bg-gradient-to-r from-[#003366] to-[#0099FF] text-white rounded-md text-center font-medium hover:shadow-lg transition-all'
+                variants={menuItemVariants}
+                custom={menuItems.length}
                 whileHover={{ scale: 1.02 }}>
                 Get Quote
               </motion.a>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -139,9 +139,9 @@ export const Hero = () => {
         </AnimatePresence>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on small devices */}
       <button
-        className='absolute left-4 top-1/2 z-50 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110'
+        className='absolute left-4 top-1/2 z-50 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110 hidden md:block'
         onClick={() =>
           setCurrentImage((prev) => (prev - 1 + images.length) % images.length)
         }>
@@ -160,7 +160,7 @@ export const Hero = () => {
         </svg>
       </button>
       <button
-        className='absolute right-4 top-1/2 z-50 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110'
+        className='absolute right-4 top-1/2 z-50 transform -translate-y-1/2 bg-black/10 hover:bg-black/30 text-white/90 hover:text-white p-3 rounded-full backdrop-blur-sm transition-all hover:scale-110 hidden md:block'
         onClick={() => setCurrentImage((prev) => (prev + 1) % images.length)}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -197,22 +197,22 @@ export const Hero = () => {
         className={`relative z-30 h-screen flex flex-col ${outfit.className}`}>
         {/* Hero Content */}
         <div className='flex-1 flex items-center'>
-          <div className='max-w-7xl mx-auto w-full grid grid-cols-12 gap-8 px-4 pt-20'>
+          <div className='max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 sm:px-6 lg:px-8 pt-20'>
             {/* Left Content */}
-            <div className='col-span-7 space-y-8'>
+            <div className='col-span-1 lg:col-span-7 space-y-8'>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1 }}
                 className='space-y-6'>
-                <h1 className='text-6xl font-bold text-white space-y-3'>
+                <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-white space-y-3'>
                   <span className='block'>Transform Your</span>
                   <span className='block bg-gradient-to-r from-blue-200 via-blue-300 to-purple-300 bg-clip-text text-transparent'>
                     Global Logistics
                   </span>
                 </h1>
-                <p className='text-xl text-white/80 max-w-xl'>
-                  Experience seamless shipping solutions with BSH Cargo. We
+                <p className='text-lg sm:text-xl text-white/80 max-w-xl'>
+                  Experience seamless shipping solutions with BSH Logistics. We
                   connect businesses worldwide with reliable, efficient, and
                   innovative logistics services.
                 </p>
@@ -227,9 +227,9 @@ export const Hero = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className='relative group'>
+                  className='relative group w-full sm:w-auto'>
                   <div className='absolute inset-0 bg-gradient-to-r from-[#003366] to-[#0099FF] rounded-xl blur-lg opacity-70 group-hover:opacity-100 transition-opacity' />
-                  <div className='relative px-8 py-4 bg-gradient-to-r from-[#003366]/90 to-[#0099FF]/90 rounded-xl flex items-center gap-4'>
+                  <div className='relative px-6 sm:px-8 py-4 bg-gradient-to-r from-[#003366]/90 to-[#0099FF]/90 rounded-xl flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start'>
                     <div className='p-2 bg-white/20 rounded-lg'>
                       <span className='text-xl'>🚢</span>
                     </div>
@@ -246,28 +246,34 @@ export const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
-                className='flex items-center gap-8 pt-8 border-t border-white/10'>
-                <div className='space-y-1'>
-                  <div className='text-3xl font-bold text-white'>15K+</div>
-                  <div className='text-sm text-white/60'>Active Clients</div>
+                className='flex items-center justify-start gap-4 sm:gap-8 pt-8 border-t border-white/10'>
+                <div className='space-y-1 flex-shrink-0'>
+                  <p className='text-2xl sm:text-3xl font-bold text-white'>
+                    15K+
+                  </p>
+                  <p className='text-sm text-white/60'>Active Clients</p>
                 </div>
-                <div className='space-y-1'>
-                  <div className='text-3xl font-bold text-white'>98%</div>
-                  <div className='text-sm text-white/60'>Success Rate</div>
+                <div className='space-y-1 flex-shrink-0'>
+                  <p className='text-2xl sm:text-3xl font-bold text-white'>
+                    98%
+                  </p>
+                  <p className='text-sm text-white/60'>Success Rate</p>
                 </div>
-                <div className='space-y-1'>
-                  <div className='text-3xl font-bold text-white'>150+</div>
-                  <div className='text-sm text-white/60'>Countries</div>
+                <div className='space-y-1 flex-shrink-0'>
+                  <p className='text-2xl sm:text-3xl font-bold text-white'>
+                    150+
+                  </p>
+                  <p className='text-sm text-white/60'>Countries</p>
                 </div>
               </motion.div>
             </div>
 
-            {/* Right Content - Shipping Types */}
+            {/* Right Content - Shipping Types - Hidden on mobile */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className='col-span-5 flex flex-col justify-center gap-4'>
+              className='hidden lg:flex col-span-5 flex-col justify-center gap-4'>
               <div className='bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-colors'>
                 <div className='flex items-center gap-4'>
                   <div className='p-3 bg-[#0099FF]/20 rounded-xl'>✈️</div>
