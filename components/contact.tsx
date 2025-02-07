@@ -14,7 +14,7 @@ const contactInfo = [
     value: (
       <>
         <p>Jamia plaza | Kigali Street</p>
-        <p>P.o. box 17305 - 00100 Nrb Kenya</p>
+        <p>P.O. Box 17305 - 00100 Nrb Kenya</p>
         <p>Tel: +254701430430</p>
         <p>Email: info@bshlogistics.co.m</p>
         <p>Warehouse: Former KBS Garage, Yare Care Eastleigh</p>
