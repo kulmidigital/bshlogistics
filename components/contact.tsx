@@ -6,69 +6,106 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import dynamic from "next/dynamic";
+import { MapPin, Mail, Phone, Building2 } from "lucide-react";
 
 const contactInfo = [
   {
-    title: "Email",
-    value: "info@bshlogistics.com",
-    icon: (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        viewBox='0 0 24 24'
-        strokeWidth={1.5}
-        stroke='currentColor'
-        className='w-5 h-5'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          d='M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75'
-        />
-      </svg>
+    title: "Kenya Office",
+    value: (
+      <>
+        <p>Jamia plaza | Kigali Street</p>
+        <p>P.o. box 17305 - 00100 Nrb Kenya</p>
+        <p>Tel: +254701430430</p>
+        <p>Email: info@bshlogistics.co.m</p>
+        <p>Warehouse: Former KBS Garage, Yare Care Eastleigh</p>
+      </>
     ),
+    icon: <Building2 className='w-5 h-5' />,
   },
   {
-    title: "Phone",
-    value: "+252614118333",
-    icon: (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        viewBox='0 0 24 24'
-        strokeWidth={1.5}
-        stroke='currentColor'
-        className='w-5 h-5'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          d='M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z'
-        />
-      </svg>
+    title: "Kenya Airport Office",
+    value: (
+      <>
+        <p>Jomo Kenyatta Airport</p>
+        <p>Cargo terminal, MAFUTA road</p>
+        <p>Opposite orakom</p>
+        <p>Agrotronic house, 2nd floor</p>
+        <p>Email: info@bshlogistics.com</p>
+      </>
     ),
+    icon: <MapPin className='w-5 h-5' />,
   },
   {
-    title: "Address",
-    value: "Halane AH/MIA, Mogadishu, Somalia",
-    icon: (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        viewBox='0 0 24 24'
-        strokeWidth={1.5}
-        stroke='currentColor'
-        className='w-5 h-5'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          d='M15 10.5a3 3 0 11-6 0 3 3 0 016 0z'
-        />
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          d='M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z'
-        />
-      </svg>
+    title: "Somalia Office",
+    value: (
+      <>
+        <p>Halane AH/MIA, Mogadisho - Somalia</p>
+        <p>Tel: +252 614118333</p>
+        <p>Email: info@bsh.so</p>
+      </>
     ),
+    icon: <Building2 className='w-5 h-5' />,
+  },
+  {
+    title: "China - Guangzhou",
+    value: (
+      <>
+        <p>No.1 block H, Xiangfeng Industrial Park,</p>
+        <p>Dali Town, Nanhai District, Foshan china</p>
+        <p>Contact: +86-136 5080 9246</p>
+        <p>Contact: +86-134 3228 3151</p>
+        <p>Warehouse Entry Code: BSH 133</p>
+      </>
+    ),
+    icon: <Building2 className='w-5 h-5' />,
+  },
+  {
+    title: "China - Yiwu/Shenzhen",
+    value: (
+      <>
+        <p>International logistics Port A6-1-2,</p>
+        <p>Jlushuo No.9, Warehouse Location 17</p>
+        <p>Contact: +86-150 6807 5036</p>
+        <p>Contact: +86-153 8179 4622</p>
+        <p>Warehouse Entry Code: BSH 888</p>
+      </>
+    ),
+    icon: <Building2 className='w-5 h-5' />,
+  },
+  {
+    title: "UK Office",
+    value: (
+      <>
+        <p>BSH Logistics</p>
+        <p>185 LONDON ROAD</p>
+        <p>MITCHAM, CR4 2JB</p>
+        <p>Email: info@bshlogistics.com</p>
+      </>
+    ),
+    icon: <Building2 className='w-5 h-5' />,
+  },
+  {
+    title: "EU Shipping",
+    value: (
+      <>
+        <p>HOMEBOX - BSH Logistics</p>
+        <p>1 rue des Préaux</p>
+        <p>95310 Saint Ouen l'Aumône, France</p>
+        <p>Email: info@bshlogistics.com</p>
+      </>
+    ),
+    icon: <Building2 className='w-5 h-5' />,
+  },
+  {
+    title: "Dubai Office",
+    value: (
+      <>
+        <p>Almamzar Gate No.7A</p>
+        <p>Contact: +971-527 062 708</p>
+        <p>Email: info@bshlogistics.com</p>
+      </>
+    ),
+    icon: <Building2 className='w-5 h-5' />,
   },
 ];
 
@@ -120,97 +157,83 @@ const ContactComponent = () => {
           </motion.p>
         </div>
 
-        <div className='grid lg:grid-cols-2 gap-12'>
-          {/* Contact Form */}
+        <div className='flex flex-col gap-16'>
+          {/* Global Offices */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className='space-y-8'>
-            <div className='grid gap-6'>
-              <div className='grid sm:grid-cols-2 gap-4'>
-                <div className='space-y-2'>
-                  <Input
-                    type='text'
-                    placeholder='First Name'
-                    className='bg-white'
-                  />
-                </div>
-                <div className='space-y-2'>
-                  <Input
-                    type='text'
-                    placeholder='Last Name'
-                    className='bg-white'
-                  />
-                </div>
-              </div>
-              <div className='space-y-2'>
-                <Input type='email' placeholder='Email' className='bg-white' />
-              </div>
-              <div className='space-y-2'>
-                <Input
-                  type='tel'
-                  placeholder='Phone Number'
-                  className='bg-white'
-                />
-              </div>
-              <div className='space-y-2'>
-                <Textarea
-                  placeholder='Your Message'
-                  className='min-h-[150px] bg-white'
-                />
-              </div>
-            </div>
-            <Button className='w-full bg-gradient-to-r from-[#003366] to-[#0099FF] text-white hover:shadow-lg transition-all'>
-              Send Message
-            </Button>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className='lg:pl-12'>
-            <div className='bg-white rounded-2xl p-8 shadow-lg'>
-              <h3 className='text-2xl font-semibold text-[#003366] mb-6'>
-                Get in Touch
-              </h3>
-              <div className='space-y-6'>
-                {contactInfo.map((info) => (
-                  <motion.div
-                    key={info.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className='flex items-start gap-4'>
-                    <div className='p-3 bg-[#0099FF]/10 rounded-lg text-[#003366]'>
+            transition={{ duration: 0.5 }}>
+            <h3 className='text-2xl font-semibold text-[#003366] mb-8 text-center'>
+              Our Global Offices
+            </h3>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {contactInfo.map((info) => (
+                <motion.div
+                  key={info.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className='bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all group'>
+                  <div className='flex items-start gap-4'>
+                    <div className='p-3 bg-gradient-to-br from-[#003366]/10 to-[#0099FF]/10 rounded-lg text-[#003366] shrink-0 group-hover:bg-[#003366]/20 transition-colors'>
                       {info.icon}
                     </div>
                     <div>
-                      <h4 className='font-medium text-[#003366]'>
+                      <h4 className='font-medium text-[#003366] mb-3'>
                         {info.title}
                       </h4>
-                      <p className='text-gray-600'>{info.value}</p>
+                      <div className='text-gray-600 space-y-1.5 text-sm'>
+                        {info.value}
+                      </div>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-              {/* Business Hours */}
-              <div className='mt-8 pt-8 border-t border-gray-100'>
-                <h4 className='font-medium text-[#003366] mb-4'>
-                  Business Hours
-                </h4>
-                <div className='space-y-2 text-gray-600'>
-                  <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                  <p>Saturday: 9:00 AM - 4:00 PM</p>
-                  <p>Sunday: Closed</p>
-                </div>
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className='max-w-2xl mx-auto w-full bg-white rounded-2xl p-8 shadow-lg'>
+            <h3 className='text-2xl font-semibold text-[#003366] mb-6'>
+              Send Us a Message
+            </h3>
+            <div className='grid gap-6'>
+              <div className='grid sm:grid-cols-2 gap-4'>
+                <Input
+                  type='text'
+                  placeholder='First Name'
+                  className='bg-white border-gray-200 focus:border-[#0099FF] focus:ring-[#0099FF]/20'
+                />
+                <Input
+                  type='text'
+                  placeholder='Last Name'
+                  className='bg-white border-gray-200 focus:border-[#0099FF] focus:ring-[#0099FF]/20'
+                />
               </div>
+              <Input
+                type='email'
+                placeholder='Email'
+                className='bg-white border-gray-200 focus:border-[#0099FF] focus:ring-[#0099FF]/20'
+              />
+              <Input
+                type='tel'
+                placeholder='Phone Number'
+                className='bg-white border-gray-200 focus:border-[#0099FF] focus:ring-[#0099FF]/20'
+              />
+              <Textarea
+                placeholder='Your Message'
+                className='min-h-[150px] bg-white border-gray-200 focus:border-[#0099FF] focus:ring-[#0099FF]/20'
+              />
+              <Button className='w-full bg-gradient-to-r from-[#003366] to-[#0099FF] text-white hover:shadow-lg transition-all'>
+                Send Message
+              </Button>
             </div>
           </motion.div>
         </div>
