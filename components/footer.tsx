@@ -117,9 +117,21 @@ export const Footer = () => {
         {/* Bottom Section */}
         <div className='mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10 text-center sm:text-left'>
           <div className='flex flex-col sm:flex-row justify-between items-center gap-4'>
-            <p className='text-sm text-gray-400 order-2 sm:order-1'>
-              © {new Date().getFullYear()} BSH Logistics. All rights reserved.
-            </p>
+            <div className='flex flex-col sm:flex-row gap-2 sm:gap-4 order-2 sm:order-1'>
+              <p className='text-sm text-gray-400'>
+                © {new Date().getFullYear()} BSH Logistics. All rights reserved.
+              </p>
+              <p className='text-sm text-gray-400'>
+                Designed By{" "}
+                <a
+                  href='https://www.kulmi.digital/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-[#0099FF] hover:text-[#0099FF]/80 transition-colors'>
+                  Kulmi Digital
+                </a>
+              </p>
+            </div>
             <div className='flex gap-4 sm:gap-6 order-1 sm:order-2'>
               <a
                 href='/privacy'
