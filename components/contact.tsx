@@ -50,11 +50,17 @@ const contactInfo = [
     title: "China - Guangzhou",
     value: (
       <>
-        <p>No.1 block H, Xiangfeng Industrial Park,</p>
-        <p>Dali Town, Nanhai District, Foshan china</p>
-        <p>Contact: +86-136 5080 9246</p>
-        <p>Contact: +86-134 3228 3151</p>
-        <p>Warehouse Entry Code: BSH 133</p>
+        <p>Bsh logistics ltd.</p>
+        <p>GZ warehouse 仓库地址: 荔城仓/利成仓</p>
+        <p>
+          广州市白云区石井镇石门街道石沙路4号荔城仓大门进来左手边B仓第二个门斜坡卸货，导航：利成仓
+        </p>
+        <p>收货时间：周一至周六早 9:30 --18:00，周天休息</p>
+        <p>仓库联系人：陈先生15112091016</p>
+        <p>
+          请一定要在唛头写上进仓号JD+BSH+客户名
+          电话，带中文装箱单给仓管，否则丢包不赔。
+        </p>
       </>
     ),
     icon: <Building2 className='w-5 h-5' />,
@@ -63,11 +69,18 @@ const contactInfo = [
     title: "China - Yiwu/Shenzhen",
     value: (
       <>
-        <p>International logistics Port A6-1-2,</p>
-        <p>Jlushuo No.9, Warehouse Location 17</p>
-        <p>Contact: +86-150 6807 5036</p>
-        <p>Contact: +86-153 8179 4622</p>
-        <p>Warehouse Entry Code: BSH 888</p>
+        <p>Bsh logistics ltd.</p>
+        <p>
+          Yiwu Warehouse:Warehouse No. 432-435, Area B, 3rd Floor, Yiwu Port,
+          No.266 Chengxin Avenue,
+          Yiwu义乌仓库:义乌市诚信大道266号义乌港三楼B区432-435仓库，导航:义乌港
+        </p>
+        <p>收货时间：每天8点-17 点，周六周日都正常收货</p>
+        <p>联系人：梁先生：15967958712</p>
+        <p>
+          请一定要在唛头写上进仓号JD+BSH+客户名
+          电话，带中文装箱单给仓管，否则丢包不赔。
+        </p>
       </>
     ),
     icon: <Building2 className='w-5 h-5' />,
