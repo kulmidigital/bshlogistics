@@ -114,7 +114,6 @@ const contactInfo = [
     value: (
       <>
         <p>Almamzar Gate No.7A</p>
-        <p>Contact: +971-527 062 708</p>
         <p>Email: info@bshlogistics.com</p>
       </>
     ),
